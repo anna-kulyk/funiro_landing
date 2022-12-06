@@ -1,5 +1,5 @@
 {
-  "name": "template",
+  "name": "funiro",
   "version": "3.0.1",
   "description": "webpage",
   "main": "index.js",
@@ -46,6 +46,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:taniarascia/webpack-boilerplate"
+    "url": "git@github.com:anna-kulyk/funiro_landing"
   }
 }

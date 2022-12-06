@@ -6,7 +6,10 @@ const paths = require('./paths')
 
 module.exports = {
   // Where webpack looks to start building the bundle
-  entry: [paths.src + '/index.js'],
+  entry: {
+    index: paths.src + '/index.js',
+    about: paths.src + '/pages/about.js'
+  },
 
   // Where webpack outputs the assets and bundles
   output: {
@@ -37,10 +40,17 @@ module.exports = {
     // Generates an HTML file from a template
     // Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
     new HtmlWebpackPlugin({
-      title: 'Template',
-      // favicon: paths.src + '/images/favicon.png',
-      template: paths.src + '/template.html', // template file
+      title: 'Funiro',
+      // favicon: paths.public + '/icons/favicon.ico',
+      template: paths.src + '/index.html', // template file
       filename: 'index.html', // output file
+      chunks: ['index'],
+    }),
+    new HtmlWebpackPlugin({
+      template: paths.src + '/pages/about.html',
+      inject: true,
+      chunks: ['about'],
+      filename: 'about.html'
     }),
   ],
 
@@ -55,6 +65,17 @@ module.exports = {
 
       // Fonts and SVGs: Inline files
       { test: /\.(woff(2)?|eot|ttf|otf|svg|)$/, type: 'asset/inline' },
+
+      {
+        // https://webpack.js.org/guides/asset-modules/#replacing-inline-loader-syntax
+        resourceQuery: /raw/,
+        type: 'asset/source'
+      },
+      {
+        // https://webpack.js.org/loaders/html-loader/#usage
+        resourceQuery: /template/,
+        loader: 'html-loader'
+      }
     ],
   },
 
