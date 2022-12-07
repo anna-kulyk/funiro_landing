@@ -1,10 +1,115 @@
+.header {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
 
+    &__wrapper {
+    }
 
+    &__container {
+    }
 
+    &__body {
+    }
 
+    &__main {
+    }
 
+    &__logo {
+    }
 
+    &__menu {
+    }
 
+    &__search {
+    }
+
+    &__actions {
+    }
+}
+
+.menu {
+
+    &_arrow {
+    }
+
+    &__body {
+    }
+
+    &__list {
+    }
+
+    &__item {
+    }
+
+    &__link {
+    }
+
+    &__sub-list {
+    }
+
+    &__sub-item {
+    }
+
+    &__sub-link {
+    }
+}
+// . {
+
+//     &_icon-arrow-down {
+//     }
+
+//     &_icon-search {
+//     }
+
+//     &_icon-favorite {
+//     }
+
+//     &_icon-cart {
+//     }
+
+//     &_ibg {
+//     }
+// }
+.search-form {
+
+    &__icon {
+    }
+
+    &__item {
+    }
+
+    &__btn {
+    }
+
+    &__input {
+    }
+}
+.actions-header {
+
+    &__item {
+
+        &_favorites {
+        }
+
+        &_user {
+        }
+    }
+}
+.cart-header {
+
+    &__icon {
+    }
+
+    &__body {
+    }
+
+    &__list {
+    }
+}
+.cart-list {
+}
 
 //===========================================================
 //Burger
@@ -23,7 +128,7 @@
 			top: calc(50% - 1px);
 			left: 0px;
 			position: absolute;
-			width: 100%;
+			width: 30px;
 			height: 2px;
 			background-color: #000;
 			&:first-child {
@@ -34,7 +139,7 @@
 				bottom: 0px;
 			}
 		}
-		&._active {
+		&.active {
 			span {
 				transform: scale(0);
 				&:first-child {
@@ -48,4 +153,10 @@
 			}
 		}
 	}
+}
+
+body{
+    &.lock {
+        position: fixed;
+    }
 }

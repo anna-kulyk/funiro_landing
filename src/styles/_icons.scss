@@ -19,6 +19,9 @@
 
 [class^="_icon-"],
 [class*=" _icon-"] {
+	
+	background-color: transparent;
+	color: #3A3A3A;
 	&:before {
 		@extend %ic;
 		display: block;
