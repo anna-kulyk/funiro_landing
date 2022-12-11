@@ -96,6 +96,24 @@
                 }
             }
         }
+
+        @media (min-width: #{$md3 + px}) {
+            &._hover {
+                .menu__sub-list {
+                    transform: translate(0px, 0px);
+                    opacity: 1;
+                    visibility: visible;
+                    pointer-events: auto;
+                }
+                .menu__arrow {
+                    transform: rotate(-180deg);
+                }
+                .menu__link,
+                .menu__arrow {
+                    color: $orangeColor;
+                }
+            }
+        }
     }
 
     &__link {
