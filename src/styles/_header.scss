@@ -39,6 +39,9 @@
     }
 
     &__search {
+        @media (min-width: #{$md2 + px}) {
+            flex: 1 1 auto;
+        }
     }
 
     &__actions {
@@ -170,17 +173,30 @@
 //     }
 // }
 .search-form {
+    max-width: 473px;
 
     &__icon {
+        display: none;
     }
 
     &__item {
+        background-color: #fff;
+        display: flex;
+        align-items: center;
     }
 
     &__btn {
+        flex: 0 0 45px;
+        height: 45px;
+        color: #333333;
+        font-size: 15px;
     }
 
     &__input {
+        width: 100%;
+        font-size: 14px;
+        padding: 0px 20px 0px 0px;
+        color: $darkGrayColor;
     }
 }
 .actions-header {
