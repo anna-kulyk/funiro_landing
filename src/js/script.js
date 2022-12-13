@@ -47,5 +47,11 @@ window.onload = function () {
                 document.querySelectorAll('.menu__item._hover').forEach(el => el.classList.remove('_hover'));
             }
         }
+        if(targetElement.classList.contains('search-form__icon')) {
+            document.querySelector('.search-form').classList.toggle('_active');
+        }
+        else if (!targetElement.closest('.search-form') && document.querySelector('.search-form._active')) {
+            document.querySelector('.search-form').classList.remove('_active');
+        }
     }
 }
