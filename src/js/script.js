@@ -39,12 +39,21 @@ window.onload = function () {
 
     function documentActions(e) {
         const targetElement = e.target;
-        if (window.innerWidth > 768 && isMobile.any()) {
+        // if (window.innerWidth > 768 && isMobile.any()) {
+        if (isMobile.any()) {
             if (targetElement.classList.contains('menu__arrow') || targetElement.classList.contains('menu__link')) {
                 targetElement.closest('.menu__item').classList.toggle('_hover');
             }
             if (!targetElement.closest('.menu__item') && document.querySelectorAll('.menu__item._hover').length > 0) {
                 document.querySelectorAll('.menu__item._hover').forEach(el => el.classList.remove('_hover'));
+            }
+        }
+        if (window.innerWidth < 768) {
+            if (targetElement.classList.contains('menu__arrow') || targetElement.classList.contains('menu__link')) {
+                let subList = targetElement.closest('.menu__item').querySelector('.menu__sub-list');
+                if (subList) {
+                    subList.classList.toggle('accordion');
+                }
             }
         }
         if(targetElement.classList.contains('search-form__icon')) {

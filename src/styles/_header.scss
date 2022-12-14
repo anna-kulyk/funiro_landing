@@ -45,6 +45,8 @@
         font-size: 24px;
         line-height: 29/24*100%;
         color: #000000;
+        position: relative;
+        z-index: 5;
     }
 
     &__menu {
@@ -68,9 +70,31 @@
         margin: 0px 0px 0px 8px;
         transition: all 0.3s ease 0s;
         font-size: 8px;
+        @media (max-width: #{$md3 + px}) {
+            font-size: 12px;
+        }
     }
 
     &__body {
+        @media (max-width: #{$md3 + px}) {
+            position: fixed;
+            width: fit-content;
+            height: 100%;
+            overflow: auto;
+            top: 0;
+            right: -100%;
+            background-color: #fcf8f3;
+            transition: right 0.3s ease 0s;
+            padding: 70px 15px 30px 15px;
+
+            &.active {
+                right: 0;
+            }
+
+        }
+        @media (max-width: #{$md4 + px}) {
+            width: 100%;
+        }
     }
 
     &__list {
@@ -130,6 +154,26 @@
                 }
             }
         }
+
+        &._hover {
+            .menu__sub-list {
+                transform: translate(0px, 0px);
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+            .menu__arrow {
+                transform: rotate(-180deg);
+            }
+            .menu__link,
+            .menu__arrow {
+                color: $orangeColor;
+            }
+        }
+
+        @media (max-width: #{$md3 + px}) {
+            justify-content: start;
+        }
     }
 
     &__link {
@@ -137,6 +181,10 @@
         color: inherit;
         background-color: transparent;
         transition: color 0.3s ease 0s;
+
+        @media (max-width: #{$md3 + px}) {
+            font-size: 24px;
+        }
     }
 
     &__sub-list {
@@ -155,6 +203,18 @@
             position: absolute;
             top: 100%;
             z-index: 5;
+        }
+        @media (max-width: #{$md3 + px}) {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0;
+            transition:all 0.3s ease 0s;
+            min-width: 150px;
+
+            &.accordion {
+                max-height: fit-content;
+                padding: 15px;
+            }
         }
     }
 
@@ -329,6 +389,7 @@
 		height: 18px;
 		cursor: pointer;
 		z-index: 5;
+        background-color: transparent;
 		span {
 			transition: all 0.3s ease 0s;
 			top: calc(50% - 1px);
@@ -336,7 +397,7 @@
 			position: absolute;
 			width: 30px;
 			height: 2px;
-			background-color: #000;
+			background-color: #262f56;
 			&:first-child {
 				top: 0px;
 			}

@@ -1,6 +1,10 @@
 body {
     color: $mainColor;
     background-color: #f9f1e7;
+
+    .lock {
+        overflow: hidden;
+    }
 }
 
 .wrapper{
