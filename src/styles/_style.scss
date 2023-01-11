@@ -19,6 +19,14 @@ body {
     margin: 0 auto;
 }
 
+._footer-title {
+    @include adaptiv-value('font-size', 24, 20, 1);
+    line-height: 29 / 24 * 100%;
+    color: #000;
+    font-weight: 700;
+    background-color: transparent;
+}
+
 main {
     height: 500px;
 }
