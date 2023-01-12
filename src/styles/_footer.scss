@@ -10,12 +10,25 @@
         @include adaptiv-value('padding-top', 80, 30, 1);
         @include adaptiv-value('padding-bottom', 60, 30, 1);
         @include adaptiv-value('column-gap', 80, 0, 1);
+
+        @media (max-width: #{$md1+px}) {
+            grid-template-rows: auto auto;
+            grid-template-columns: 1fr 290px;
+        }
+        @media (max-width: #{$md2+px}) {
+            display: block;
+        }
     }
     // .footer__main
     &__main {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+
+        @media (max-width: #{$md1+px}) {
+            grid-column: span 2;
+            @include adaptiv-value('margin-bottom', 40, 30, 1);
+        }
     }
     // .footer__logo
     &__logo {
@@ -34,6 +47,9 @@
     }
     // .footer__menu
     &__menu {
+        @media (max-width: #{$md2+px}) {
+            @include adaptiv-value('margin-bottom', 40, 30, 1);
+        }
     }
     // .footer__subscribe
     &__subscribe {
