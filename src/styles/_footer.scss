@@ -1,7 +1,4 @@
 .footer {
-    // .footer__container
-    &__container {
-    }
     // .footer__body
     &__body {
         border-top: 1px solid #d8d8d8;
@@ -43,8 +40,8 @@
         }
     }
     // .footer__contacts
-    &__contacts {
-    }
+    // &__contacts {
+    // }
     // .footer__menu
     &__menu {
         @media (max-width: #{$md2+px}) {
@@ -55,8 +52,8 @@
         }
     }
     // .footer__subscribe
-    &__subscribe {
-    }
+    // &__subscribe {
+    // }
 }
 
 .contacts-footer {
@@ -106,7 +103,7 @@
         &::before {
             display: none;
         }
-        
+
         &.active {
             &::before {
                 transform: rotate(-180deg);
@@ -120,7 +117,7 @@
                 transition: all 0.3s ease 0s;
                 display: flex;
                 position: relative;
-                top: 7px;
+                top: 8px;
                 font-size: 12px;
                 margin-left: 5px;
             }
@@ -201,11 +198,4 @@
             }
         }
     }
-}
-
-._icon-location {
-}
-._icon-phone {
-}
-._icon-send {
 }

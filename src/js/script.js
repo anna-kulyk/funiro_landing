@@ -69,4 +69,14 @@ window.onload = function () {
             document.querySelector('.search-form').classList.remove('_active');
         }
     }
+
+    document.addEventListener('submit', documentSubmitActions);
+
+    function documentSubmitActions(e) {
+        const targetElement = e.target;
+        if (targetElement.classList.contains('search-form__item') || targetElement.classList.contains('subscribe__form')) {
+            e.preventDefault();
+            targetElement.reset();
+        }
+    }
 }
