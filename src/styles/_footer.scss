@@ -50,6 +50,9 @@
         @media (max-width: #{$md2+px}) {
             @include adaptiv-value('margin-bottom', 40, 30, 1);
         }
+        @media (max-width: #{$md3+px}) {
+            margin-bottom: 0;
+        }
     }
     // .footer__subscribe
     &__subscribe {
@@ -91,17 +94,58 @@
         @media (min-width: #{$md3+px}) {
             flex: 0 1 33.333%;
         }
+        @media (max-width: #{$md3+px}) {
+            margin-bottom: 16px/24px*1em;
+        }
     }
     // .menu-footer__title
     &__title {
         cursor: default;
         margin: 0px 0px 16px/24px*1em 0px;
+
+        &::before {
+            display: none;
+        }
+        
+        &.active {
+            &::before {
+                transform: rotate(-180deg);
+            }
+        }
+
+        @media (max-width: #{$md3+px}) {
+            display: flex;
+            flex-direction: row-reverse;
+            &::before {
+                transition: all 0.3s ease 0s;
+                display: flex;
+                position: relative;
+                top: 7px;
+                font-size: 12px;
+                margin-left: 5px;
+            }
+        }
     }
     // .menu-footer__list
     &__list {
+        position: relative;
+
         li {
             &:not(:last-child) {
                 margin: 0px 0px 15px 0px;
+            }
+        }
+        
+        @media (max-width: #{$md3+px}) {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease 0s;
+
+            &.accordion {
+                max-height: 260px;
+                li {
+                    margin: 0px 0px 15px 0px;
+                }
             }
         }
     }

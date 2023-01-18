@@ -55,6 +55,13 @@ window.onload = function () {
                     subList.classList.toggle('accordion');
                 }
             }
+            if (targetElement.classList.contains('menu-footer__title')) {
+                let subList = targetElement.closest('.menu-footer__column').querySelector('.menu-footer__list');
+                if (subList) {
+                    subList.classList.toggle('accordion');
+                    targetElement.classList.toggle('active');
+                }
+            }
         }
         if (targetElement.classList.contains('search-form__icon')) {
             document.querySelector('.search-form').classList.toggle('_active');
