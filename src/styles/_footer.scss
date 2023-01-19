@@ -194,7 +194,8 @@
         transition: background-color 0.3s ease 0s;
         @media (any-hover: hover) {
             &:hover {
-                background-color: #be825c;
+                background-color: #f7decd;
+                color: $orangeColor;
             }
         }
     }
