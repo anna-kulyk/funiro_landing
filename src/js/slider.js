@@ -1,4 +1,4 @@
-import Swiper, { Navigation, Pagination } from 'swiper';
+import Swiper, { Navigation, Pagination, Parallax } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -67,7 +67,7 @@ if (sliderScrollItems.length > 0) {
 
 if (document.querySelector('.slider-main__body')) {
     new Swiper('.slider-main__body', {
-        modules: [Navigation, Pagination],
+        modules: [Navigation, Pagination, Parallax],
 		observer: true,
 		observeParents: true,
 		slidesPerView: 1,
