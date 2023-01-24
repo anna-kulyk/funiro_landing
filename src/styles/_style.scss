@@ -139,7 +139,7 @@ body {
     &_white {
         @extend .btn;
         color: $orangeColor;
-        border-radius: 1px solid $orangeColor;
+        border: 1px solid $orangeColor;
         background-color: #fff;
     }
     
@@ -148,6 +148,13 @@ body {
         color: #fff;
         background-color: $orangeColor;
     }
+}
+
+._section-title {
+    @include adaptiv-value('font-size', 40, 24, 1);
+    font-weight: 700;
+    line-height: 120%;
+    text-align: center;
 }
 
 //=============================================================================
