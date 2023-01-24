@@ -79,4 +79,17 @@ window.onload = function () {
             targetElement.reset();
         }
     }
+
+    //Header
+    const headerElement = document.querySelector('.header');
+
+    const headerObserver = new IntersectionObserver(function(entries) {
+        if(entries[0].isIntersecting) {
+            headerElement.classList.remove('_scroll');
+        } else {
+            headerElement.classList.add('_scroll');
+        }
+    });
+    headerObserver.observe(headerElement);
+
 }
