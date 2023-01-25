@@ -1,4 +1,7 @@
 // const { doc } = require("prettier");
+import products from '../json/products.json';
+
+//==========================================================================
 
 let menu = document.querySelector(".menu__body");
 let menuIcon = document.querySelector(".icon-menu");
@@ -68,6 +71,10 @@ window.onload = function () {
         } else if (!targetElement.closest('.search-form') && document.querySelector('.search-form._active')) {
             document.querySelector('.search-form').classList.remove('_active');
         }
+        if (targetElement.classList.contains('products__more')) {
+            e.preventDefault();
+            getProducts(targetElement);
+        }
     }
 
     document.addEventListener('submit', documentSubmitActions);
@@ -80,6 +87,8 @@ window.onload = function () {
         }
     }
 
+    //==========================================================================
+
     //Header
     const headerElement = document.querySelector('.header');
 
@@ -91,5 +100,122 @@ window.onload = function () {
         }
     });
     headerObserver.observe(headerElement);
+
+    //Load more products
+    let productId = 4;
+    function getProducts(button) {
+        if (button.classList.contains('_hold')) { return };
+
+        button.classList.add('_hold');
+        let productsToLoad = products.products.slice(productId, productId + 4);
+        productId += 4;
+        loadProducts(productsToLoad);
+        button.classList.remove('_hold');
+        if (productId >= products.products.length) {
+            button.remove();
+        }
+    }
+
+    function loadProducts(data) {
+        const productsItems = document.querySelector('.products__items');
+
+        data.forEach(item => {
+            // console.log(item);
+
+			let productTemplateStart = `<article data-pid="${item.id}" class="products__item item-product">`;
+			let productTemplateEnd = `</article>`;
+
+			let productTemplateLabels = '';
+			if (item.labels.length > 0) {
+				let productTemplateLabelsStart = `<div class="item-product__labels">`;
+				let productTemplateLabelsEnd = `</div>`;
+				let productTemplateLabelsContent = '';
+
+				item.labels.forEach(labelItem => {
+					productTemplateLabelsContent += `<div class="item-product__label item-product__label_${labelItem.type}">${labelItem.value}</div>`;
+				});
+
+				productTemplateLabels += productTemplateLabelsStart;
+				productTemplateLabels += productTemplateLabelsContent;
+				productTemplateLabels += productTemplateLabelsEnd;
+			}
+
+			let productTemplateImage = `
+                <a href="${item.url}" class="item-product__image item-product__image_loaded">
+                    <img src="../assets/images/products/${item.image}" alt="${item.title}">
+                </a>
+            `;
+
+			let productTemplateBodyStart = `<div class="item-product__body">`;
+			let productTemplateBodyEnd = `</div>`;
+
+			let productTemplateContent = `
+                <div class="item-product__content">
+                    <h3 class="item-product__title">${item.title}</h3>
+                    <div class="item-product__text">${item.text}</div>
+                </div>
+            `;
+
+			let productTemplatePrices = '';
+			let productTemplatePricesStart = `<div class="item-product__prices">`;
+			let productTemplatePricesCurrent = `<div class="item-product__price">Rp ${item.price}</div>`;
+			let productTemplatePricesOld = `<div class="item-product__price item-product__price_old">Rp ${item.priceOld}</div>`;
+			let productTemplatePricesEnd = `</div>`;
+
+			productTemplatePrices = productTemplatePricesStart;
+			productTemplatePrices += productTemplatePricesCurrent;
+			if (item.priceOld) {
+				productTemplatePrices += productTemplatePricesOld;
+			}
+			productTemplatePrices += productTemplatePricesEnd;
+
+			let productTemplateActions = `
+                <div class="item-product__actions actions-product">
+                    <div class="actions-product__body">
+                        <a href="" class="actions-product__button btn btn_white">Add to cart</a>
+                        <a href="${item.shareUrl}" class="actions-product__link _icon-share">Share</a>
+                        <a href="${item.likeUrl}" class="actions-product__link _icon-favorite">Like</a>
+                    </div>
+                </div>
+            `;
+
+			let productTemplateBody = '';
+			productTemplateBody += productTemplateBodyStart;
+			productTemplateBody += productTemplateContent;
+			productTemplateBody += productTemplatePrices;
+			productTemplateBody += productTemplateActions;
+			productTemplateBody += productTemplateBodyEnd;
+
+			let productTemplate = '';
+			productTemplate += productTemplateStart;
+			productTemplate += productTemplateLabels;
+			productTemplate += productTemplateImage;
+			productTemplate += productTemplateBody;
+			productTemplate += productTemplateEnd;
+
+			productsItems.insertAdjacentHTML('beforeend', productTemplate);
+        })
+    }
+
+	// async function getProducts(button) {
+	// 	if (!button.classList.contains('_hold')) {
+	// 		button.classList.add('_hold');
+	// 		const file = "json/products.json";
+	// 		let response = await fetch(file, {
+	// 			method: "GET"
+	// 		});
+	// 		if (response.ok) {
+	// 			let result = await response.json();
+	// 			loadProducts(result);
+	// 			button.classList.remove('_hold');
+	// 			button.remove();
+	// 		} else {
+	// 			alert("Ошибка");
+	// 		}
+	// 	}
+	// }
+
+    
+
 
 }
