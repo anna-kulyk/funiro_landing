@@ -12,8 +12,8 @@
                 }
             ],
             "image": "01.jpg",
-            "price": "2.500.000",
-            "priceOld": "3.500.000",
+            "price": "245",
+            "priceOld": "350",
             "shareUrl": "",
             "likeUrl": ""
         },
@@ -29,8 +29,8 @@
                 }
             ],
             "image": "02.jpg",
-            "price": "2.500.000",
-            "priceOld": "",
+            "price": "175",
+            "priceOld": "250",
             "shareUrl": "",
             "likeUrl": ""
         },
@@ -46,8 +46,8 @@
                 }
             ],
             "image": "03.jpg",
-            "price": "7.000.000",
-            "priceOld": "14.000.000",
+            "price": "2.250",
+            "priceOld": "4.500",
             "shareUrl": "",
             "likeUrl": ""
         },
@@ -63,7 +63,7 @@
                 }
             ],
             "image": "04.jpg",
-            "price": "500.000",
+            "price": "125",
             "priceOld": "",
             "shareUrl": "",
             "likeUrl": ""
@@ -75,7 +75,7 @@
             "text": "Night lamp",
             "labels": [],
             "image": "05.jpg",
-            "price": "1.500.000",
+            "price": "375",
             "priceOld": "",
             "shareUrl": "",
             "likeUrl": ""
@@ -92,7 +92,7 @@
                 }
             ],
             "image": "06.jpg",
-            "price": "150.000",
+            "price": "35",
             "priceOld": "",
             "shareUrl": "",
             "likeUrl": ""
@@ -109,8 +109,8 @@
                 }
             ],
             "image": "07.jpg",
-            "price": "7.000.000",
-            "priceOld": "14.000.000",
+            "price": "250",
+            "priceOld": "500",
             "shareUrl": "",
             "likeUrl": ""
         },
@@ -126,7 +126,7 @@
                 }
             ],
             "image": "08.jpg",
-            "price": "500.000",
+            "price": "80",
             "priceOld": "",
             "shareUrl": "",
             "likeUrl": ""
@@ -143,7 +143,7 @@
                 }
             ],
             "image": "09.jpg",
-            "price": "17.000.000",
+            "price": "2.000",
             "priceOld": "",
             "shareUrl": "",
             "likeUrl": ""
@@ -160,7 +160,7 @@
                 }
             ],
             "image": "10.jpg",
-            "price": "20.000.000",
+            "price": "1.145",
             "priceOld": "",
             "shareUrl": "",
             "likeUrl": ""
@@ -177,7 +177,7 @@
                 }
             ],
             "image": "11.jpg",
-            "price": "15.000.000",
+            "price": "1.000",
             "priceOld": "",
             "shareUrl": "",
             "likeUrl": ""
