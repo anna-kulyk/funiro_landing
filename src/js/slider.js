@@ -90,3 +90,29 @@ if (document.querySelector('.slider-main__body')) {
 		}
 	});
 }
+
+if (document.querySelector('.slider-inspiration__body')) {
+    new Swiper('.slider-inspiration__body', {
+        modules: [Navigation, Pagination, Parallax],
+		observer: true,
+		observeParents: true,
+		slidesPerView: 'auto',
+		spaceBetween: 24,
+		watchOverflow: true,
+		speed: 800,
+		loop: true,
+		loopAdditionalSlides: 5,
+		preloadImages: false,
+		parallax: true,
+		// Dotts
+		pagination: {
+			el: '.slider-inspiration__dotts',
+			clickable: true,
+		},
+		// Arrows
+		navigation: {
+			nextEl: '.slider-inspiration .slider-arrow_next',
+			prevEl: '.slider-inspiration .slider-arrow_prev',
+		}
+	});
+}
