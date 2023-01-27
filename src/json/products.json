@@ -15,7 +15,8 @@
             "price": "245",
             "priceOld": "350",
             "shareUrl": "",
-            "likeUrl": ""
+            "likeUrl": "",
+            "room": ["dining"]
         },
         {
             "id": 2,
@@ -32,7 +33,8 @@
             "price": "175",
             "priceOld": "250",
             "shareUrl": "",
-            "likeUrl": ""
+            "likeUrl": "",
+            "room": ["dining", "living"]
         },
         {
             "id": 3,
@@ -49,7 +51,8 @@
             "price": "2.250",
             "priceOld": "4.500",
             "shareUrl": "",
-            "likeUrl": ""
+            "likeUrl": "",
+            "room": ["living"]
         },
         {
             "id": 4,
@@ -66,7 +69,8 @@
             "price": "125",
             "priceOld": "",
             "shareUrl": "",
-            "likeUrl": ""
+            "likeUrl": "",
+            "room": ["dining", "living"]
         },
         {
             "id": 5,
@@ -78,7 +82,8 @@
             "price": "375",
             "priceOld": "",
             "shareUrl": "",
-            "likeUrl": ""
+            "likeUrl": "",
+            "room": ["bedroom", "living"]
         },
         {
             "id": 6,
@@ -95,7 +100,8 @@
             "price": "35",
             "priceOld": "",
             "shareUrl": "",
-            "likeUrl": ""
+            "likeUrl": "",
+            "room": ["dining"]
         },
         {
             "id": 7,
@@ -112,7 +118,8 @@
             "price": "250",
             "priceOld": "500",
             "shareUrl": "",
-            "likeUrl": ""
+            "likeUrl": "",
+            "room": ["bedroom"]
         },
         {
             "id": 8,
@@ -129,7 +136,8 @@
             "price": "80",
             "priceOld": "",
             "shareUrl": "",
-            "likeUrl": ""
+            "likeUrl": "",
+            "room": ["living"]
         },
         {
             "id": 9,
@@ -146,7 +154,8 @@
             "price": "2.000",
             "priceOld": "",
             "shareUrl": "",
-            "likeUrl": ""
+            "likeUrl": "",
+            "room": ["living"]
         },
         {
             "id": 10,
@@ -163,7 +172,8 @@
             "price": "1.145",
             "priceOld": "",
             "shareUrl": "",
-            "likeUrl": ""
+            "likeUrl": "",
+            "room": ["bedroom"]
         },
         {
             "id": 11,
@@ -180,7 +190,8 @@
             "price": "1.000",
             "priceOld": "",
             "shareUrl": "",
-            "likeUrl": ""
+            "likeUrl": "",
+            "room": ["living"]
         }
     ]
 }
