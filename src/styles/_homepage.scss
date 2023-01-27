@@ -9,6 +9,9 @@
     // .page__products
     &__products {
     }
+    // .page__inspiration
+    &__inspiration {
+    }
 }
 
 //============================ Main Slider =====================================
@@ -486,4 +489,104 @@
         }
     }
 }
+
+//============================ Inspiration =====================================
+
+.inspiration {
+    background: #fcf8f3;
+    @include adaptiv-value('padding-top', 44, 30, 1);
+    @include adaptiv-value('padding-bottom', 44, 30, 1);
+    // .inspiration__container
+    &__container {
+        @media (min-width: #{$md2 + px}) {
+            display: flex;
+        }
+    }
+    // .inspiration__body
+    &__body {
+        flex: 0 0 465 / 1240 * 100%;
+        position: relative;
+        z-index: 5;
+        align-self: center;
+        @media (min-width: #{$md2 + px}) {
+            @include adaptiv-value('padding-right', 80, 30, 1);
+        }
+    }
+    // .inspiration__title
+    &__title {
+        text-align: left;
+        &:not(:last-child) {
+            margin: 0px 0px 8px/40px * 1em 0px;
+        }
+    }
+    // .inspiration__text
+    &__text {
+        line-height: 150%;
+        font-weight: 500;
+        &:not(:last-child) {
+            margin: 0px 0px 24px 0px;
+        }
+    }
+    // .inspiration__button
+    &__button {
+        min-width: 180px;
+    }
+    // .inspiration__slider
+    &__slider {
+        flex: 1 1 auto;
+        min-width: 0;
+        align-self: flex-start;
+    }
+}
+.slider-inspiration {
+    // .slider-inspiration__body
+    &__body {
+    }
+    // .slider-inspiration__slide
+    &__slide {
+    }
+    // .slider-inspiration__image
+    &__image {
+    }
+    // .slider-inspiration__content
+    &__content {
+    }
+    // .slider-inspiration__label
+    &__label {
+    }
+    // .slider-inspiration__title
+    &__title {
+    }
+    // .slider-inspiration__arrows
+    &__arrows {
+    }
+    // .slider-inspiration__dotts
+    &__dotts {
+    }
+}
+.label-slider {
+    // .label-slider__number
+    &__number {
+    }
+    // .label-slider__line
+    &__line {
+    }
+    // .label-slider__text
+    &__text {
+    }
+}
+// .slider-arrows {
+// }
+// .slider-arrow {
+//     // .slider-arrow_white
+//     &_white {
+//     }
+//     // .slider-arrow_prev
+//     &_prev {
+//     }
+//     // .slider-arrow_next
+//     &_next {
+//     }
+// }
+
 
