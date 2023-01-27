@@ -1,4 +1,4 @@
-import Swiper, { Navigation, Pagination, Parallax } from 'swiper';
+import Swiper, { Navigation, Pagination, Parallax, Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -67,7 +67,7 @@ if (sliderScrollItems.length > 0) {
 
 if (document.querySelector('.slider-main__body')) {
     new Swiper('.slider-main__body', {
-        modules: [Navigation, Pagination, Parallax],
+        modules: [Navigation, Pagination, Parallax, Autoplay],
 		observer: true,
 		observeParents: true,
 		slidesPerView: 1,
@@ -87,6 +87,9 @@ if (document.querySelector('.slider-main__body')) {
 		navigation: {
 			nextEl: '.slider-main .slider-arrow_next',
 			prevEl: '.slider-main .slider-arrow_prev',
+		},
+		autoplay: {
+			delay: 5000,
 		}
 	});
 }
