@@ -1,5 +1,4 @@
 // const { doc } = require("prettier");
-import { doc } from 'prettier';
 import products from '../json/products.json';
 
 //==========================================================================

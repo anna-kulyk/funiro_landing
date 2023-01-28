@@ -119,3 +119,41 @@ if (document.querySelector('.slider-inspiration__body')) {
 		}
 	});
 }
+
+if (document.querySelector('.slider-tips__body')) {
+    new Swiper('.slider-tips__body', {
+        modules: [Navigation, Pagination, Parallax],
+		observer: true,
+		observeParents: true,
+		breakpoints: {
+			320: {
+			  slidesPerView: 1,
+			},
+			480: {
+				slidesPerView: 1.5,
+			  },
+			768: {
+			  slidesPerView: 2,
+			},
+			992: {
+			  slidesPerView: 3,
+			}
+		},
+		spaceBetween: 32,
+		watchOverflow: true,
+		speed: 800,
+		loop: true,
+		centeredSlides: true,
+		parallax: true,
+		// Dotts
+		pagination: {
+			el: '.slider-tips__dotts',
+			clickable: true,
+		},
+		// Arrows
+		navigation: {
+			nextEl: '.slider-tips .slider-arrow_next',
+			prevEl: '.slider-tips .slider-arrow_prev',
+		}
+	});
+}
