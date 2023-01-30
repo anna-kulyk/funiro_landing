@@ -15,6 +15,9 @@
     // .page__tips
     &__tips {
     }
+    // .page__gallery
+    &__gallery {
+    }
 }
 
 //============================ Main Slider =====================================
@@ -798,5 +801,54 @@
         justify-content: center;
     }
 }
+
+//============================ Gallery =====================================
+
+.gallery {
+    @include adaptiv-value('padding-bottom', 88, 30, 1);
+    // .gallery__container
+    &__container {
+    }
+    // .gallery__label
+    &__label {
+        text-align: center;
+    }
+    // .gallery__title
+    &__title {
+    }
+    // .gallery__body
+    &__body {
+    }
+    // .gallery__items
+    &__items {
+    }
+    // .gallery__column
+    &__column {
+    }
+    // .gallery__row
+    &__row {
+    }
+}
+.row-gallery {
+    // .row-gallery_left-top
+    &_left-top {
+    }
+    // .row-gallery_left-bottom
+    &_left-bottom {
+    }
+    // .row-gallery_center
+    &_center {
+    }
+    // .row-gallery_right-top
+    &_right-top {
+    }
+    // .row-gallery_right-bottom
+    &_right-bottom {
+    }
+    // .row-gallery__item
+    &__item {
+    }
+}
+
 
 
