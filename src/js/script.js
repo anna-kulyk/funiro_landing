@@ -107,7 +107,6 @@ window.onload = function () {
     }
 
     //==========================================================================
-
     //Header
     const headerElement = document.querySelector('.header');
 
@@ -120,6 +119,7 @@ window.onload = function () {
     });
     headerObserver.observe(headerElement);
 
+    //==========================================================================
     //Load more products
     let productIndex = 4;
     function getProducts(button) {
@@ -234,6 +234,7 @@ window.onload = function () {
 	// 	}
 	// }
 
+    //==========================================================================
     //Add to cart
     let itemsInCart = JSON.parse(localStorage.getItem('cartFuniro'));
     if (itemsInCart) {
@@ -359,6 +360,54 @@ window.onload = function () {
         }
     }
     
+    //==========================================================================
+    //Gallery
+    const gallery = document.querySelector('.gallery__body');
+    let galleryItems, galleryColumn, speed, positionX, coordXpercentage;
 
+    if (gallery && !isMobile.any()) {
+        galleryItems = document.querySelector('.gallery__items');
+		galleryColumn = document.querySelectorAll('.gallery__column');
+
+		// Speed of animation
+		speed = gallery.dataset.speed;
+
+		positionX = 0;
+		coordXpercentage = 0;
+
+		gallery.addEventListener("mousemove", function (e) {
+			const furnitureWidth = gallery.offsetWidth;
+
+			const coordX = e.pageX - furnitureWidth / 2;
+
+			coordXpercentage  = coordX / furnitureWidth * 200;
+
+			if (!gallery.classList.contains('_init')) {
+				requestAnimationFrame(setMouseGalleryStyle);
+				gallery.classList.add('_init');
+			}
+		});
+    }
+
+    function setMouseGalleryStyle() {
+        let galleryItemsWidth = 0;
+        galleryColumn.forEach(element => {
+            galleryItemsWidth += element.offsetWidth;
+        });
+
+        const furnitureDifferent = galleryItemsWidth - gallery.offsetWidth;
+        const distX = Math.floor(coordXpercentage - positionX);
+
+        positionX = positionX + (distX * speed);
+        let position = furnitureDifferent / 200 * positionX;
+
+        galleryItems.style.cssText = `transform: translate3d(${-position}px,0,0);`;
+
+        if (Math.abs(distX) > 0) {
+            requestAnimationFrame(setMouseGalleryStyle);
+        } else {
+            gallery.classList.remove('_init');
+        }
+    }
 
 }

@@ -812,41 +812,94 @@
     // .gallery__label
     &__label {
         text-align: center;
+        color: $darkGrayColor;
+        line-height: 150%;
+        @include adaptiv-value('font-size', 20, 16, 1);
+        &:not(:last-child) {
+            margin: 0px 0px 8px/20px * 1em 0px;
+        }
     }
     // .gallery__title
     &__title {
+        margin: 0px 0px 32px/40px * 1em 0px;
     }
     // .gallery__body
     &__body {
+        position: relative;
+        @media (any-hover: none) {
+            overflow: auto;
+        }
     }
     // .gallery__items
     &__items {
+        display: grid;
+        grid-template-columns: auto;
+        grid-auto-flow: column;
+        align-items: center;
+        gap: 16px;
+        @media (any-hover: hover) {
+            justify-content: center;;
+        }
     }
     // .gallery__column
     &__column {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 0px -8px;
+        &:first-child {
+            justify-content: flex-end;
+        }
     }
     // .gallery__row
     &__row {
+        display: inline-grid;
+        padding: 0px 8px;
+        gap: 16px;
+        grid-template-columns: auto;
+        grid-auto-flow: column;
+        &:not(:last-child) {
+            margin: 0px 0px 16px 0px;
+        }
     }
 }
 .row-gallery {
     // .row-gallery_left-top
     &_left-top {
+        justify-content: end;
+        align-items: end;
     }
     // .row-gallery_left-bottom
     &_left-bottom {
+        justify-content: end;
+        align-items: start;
     }
     // .row-gallery_center
     &_center {
+        display: block;
     }
     // .row-gallery_right-top
     &_right-top {
+        align-items: end;
     }
     // .row-gallery_right-bottom
     &_right-bottom {
+        align-items: start;
     }
     // .row-gallery__item
     &__item {
+        @media (any-hover: hover) {
+            img {
+                transition: all 0.8s ease 0s;
+                transform: scale(1);
+            }
+
+            &:hover {
+                img {
+                    transform: scale(0.9);
+                }
+            }
+        }
     }
 }
 
