@@ -3,6 +3,8 @@
 import '@/js/script.js';
 import '@/js/slider.js';
 
+import baguetteBox from 'js/baguetteBox.js';
+baguetteBox.run('.gallery');
 
 import '@/styles/index.scss';
 
