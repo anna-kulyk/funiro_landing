@@ -38,6 +38,7 @@ ibg();
 let isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
 
 window.onload = function () {
+    document.body.style.display = 'block';
     document.addEventListener('click', documentActions);
 
     function documentActions(e) {
@@ -45,9 +46,7 @@ window.onload = function () {
         // e.preventDefault();
         // console.log(targetElement);
         // console.log(e);
-        // view.location.pathname "/products.html" "/"
 
-        // if (window.innerWidth > 768 && isMobile.any()) {
         if (isMobile.any()) {
             if (targetElement.classList.contains('menu__arrow') || targetElement.classList.contains('menu__link')) {
                 targetElement.closest('.menu__item').classList.toggle('_hover');
@@ -166,8 +165,6 @@ window.onload = function () {
         const productsItems = document.querySelector('.products__items');
 
         data.forEach(item => {
-            // console.log(item);
-
 			let productTemplateStart = `<article data-pid="${item.id}" class="products__item item-product">`;
 			let productTemplateEnd = `</article>`;
 
@@ -256,7 +253,7 @@ window.onload = function () {
 	// 			button.classList.remove('_hold');
 	// 			button.remove();
 	// 		} else {
-	// 			alert("Ошибка");
+	// 			alert("Error");
 	// 		}
 	// 	}
 	// }
@@ -441,34 +438,59 @@ window.onload = function () {
     }
     
     //================================================================================
-    //Products page load products
+    //Products page filter & load products
+
+    let productFilters = {
+        new: 'New arrivals',
+        sale: 'Sale',
+        bedroom: 'Bedroom',
+        living: 'Living room',
+        dining: 'Dining room'
+    }
 
     if (window.location.pathname == '/products.html') {
-        loadProducts(products.products);
+        let productFilter = JSON.parse(localStorage.getItem('productFilter'));
+        let productToShow, roomToShow;
+        let productData;
+        if (productFilter) {
+            productToShow = productFilter.product;
+            roomToShow = productFilter.room;
+            const filterTitleOutput = document.querySelector('.filter-products__title');
+            const filterSubtitleOutput = document.querySelector('.filter-products__subtitle');
+            const filetArrow = document.querySelector('.filter-products__arrow');
+            // filter-products__title 
+            if (productToShow != 'all') {
+                filterTitleOutput.textContent = 'Product'
+                filterSubtitleOutput.textContent = productFilters[productToShow];
+                productData = filterProductsByType(products.products, productToShow)
+            } else if (roomToShow != 'all') {
+                filterTitleOutput.textContent = 'Room'
+                filterSubtitleOutput.textContent = productFilters[roomToShow];
+                productData = products.products.filter(el => el.room.includes(roomToShow))
+            } else {
+                filetArrow.style.display = 'none';
+                productData = products.products;
+            }
+        }
+
+        if (productData.length > 0) {
+            loadProducts(productData);
+        } 
     }
-    
-    //================================================================================
-    //Products page filter
-    
-    let productFilter = JSON.parse(localStorage.getItem('productFilter'));
-    let productToShow, roomToShow;
-    if (productFilter) {
-        productToShow = productFilter.product;
-        roomToShow = productFilter.room;
-    } else {
-        productToShow = 'all';
-        roomToShow = 'all';
+
+    function filterProductsByType(data, type) {
+        let filteredProducts = [];
+        for (let i = 0; i < data.length; i++) {
+            const element = data[i];
+            const labelTypes = element.labels;
+
+            for (let j = 0; j < labelTypes.length; j++) {
+                const label = labelTypes[j];
+                if (label.type == type) {
+                    filteredProducts.push(element);
+                }
+            }
+        }
+        return filteredProducts;
     }
-    let productOutput = document.querySelector('.product_output');
-    let roomOutput = document.querySelector('.room_output');
-    if(productOutput && roomOutput) {
-        productOutput.textContent = productToShow;
-        roomOutput.textContent = roomToShow;
-    }
-    
-    // let res = products.products.filter(el=>{return el.room.includes('bedroom')});
-    // // res = products.products.map(el=>{return el.room.includes('bedroom')})
-    // console.log(res);
-    
-    
 }
