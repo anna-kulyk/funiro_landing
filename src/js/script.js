@@ -42,6 +42,10 @@ window.onload = function () {
 
     function documentActions(e) {
         const targetElement = e.target;
+        // e.preventDefault();
+        // console.log(targetElement);
+        // console.log(e);
+        // view.location.pathname "/products.html" "/"
 
         // if (window.innerWidth > 768 && isMobile.any()) {
         if (isMobile.any()) {
@@ -93,6 +97,29 @@ window.onload = function () {
             e.preventDefault();
             const productId = targetElement.closest('.cart-list__item').dataset.cartPid;
             updateCart(targetElement, productId, false);
+        }
+        if (targetElement.classList.contains('menu__sub-link') || targetElement.classList.contains('slider-main__content') || targetElement.parentElement.classList.contains('slider-main__content')) {
+            let productFilter = {
+                product: 'all',
+                room: 'all'
+            }
+            let filter = targetElement.dataset.product;
+            if(filter) {
+                productFilter.product = filter;
+                localStorage.setItem('productFilter', JSON.stringify(productFilter));
+            } else {
+                filter = targetElement.dataset.room;
+                if(filter) {
+                    productFilter.room = filter;
+                    localStorage.setItem('productFilter', JSON.stringify(productFilter));
+                } else {
+                    filter = targetElement.parentElement.dataset.room;
+                    if(filter) {
+                        productFilter.room = filter;
+                        localStorage.setItem('productFilter', JSON.stringify(productFilter));
+                    }
+                }
+            }
         }
     }
 
@@ -238,11 +265,10 @@ window.onload = function () {
     //Add to cart
     let itemsInCart = JSON.parse(localStorage.getItem('cartFuniro'));
     if (itemsInCart) {
-        const addBtn = document.querySelector('.actions-product__button');
         for (const itemId in itemsInCart) {
             let numberOfItems = itemsInCart[itemId];
             while (numberOfItems > 0) {
-                updateCart(addBtn, itemId, true);
+                updateCart(null, itemId, true);
                 numberOfItems--;
             }
         }
@@ -301,7 +327,6 @@ window.onload = function () {
         const cartQuantity = cartIcon.querySelector('span');
         const cartProduct = document.querySelector(`[data-cart-pid="${productId}"]`);
         const cartList = document.querySelector('.cart-list');
-        const productsItems = document.querySelector('.products__items');
 
         if (productAdd) {
             if (cartQuantity) {
@@ -310,11 +335,14 @@ window.onload = function () {
                 cartIcon.insertAdjacentHTML('beforeend', '<span>1</span>');
             }
             if (!cartProduct) {
-				const product = productsItems.querySelector(`[data-pid="${productId}"]`);
-				const cartProductImage = product.querySelector('.item-product__image').innerHTML;
-				const cartProductTitle = product.querySelector('.item-product__title').innerHTML;
+                const product = products.products[productId - 1];
+                const cartProductImage = product.image;
+                const cartProductTitle = product.title;
+
 				const cartProductContent = `
-                    <a href="" class="cart-list__image">${cartProductImage}</a>
+                    <a href="" class="cart-list__image">
+                        <img src="../assets/images/products/${cartProductImage}" alt="${cartProductTitle}">
+                    </a>
                     <div class="cart-list__body">
                         <a href="" class="cart-list__title">${cartProductTitle}</a>
                         <div class="cart-list__quantity">Quantity: <span>1</span></div>
@@ -332,7 +360,9 @@ window.onload = function () {
                 itemsInCart[productId] += 1;
                 localStorage.setItem('cartFuniro', JSON.stringify(itemsInCart));
 			}
-            productButton.classList.remove('_hold');
+            if (productButton) {
+                productButton.classList.remove('_hold');
+            }
         } else {
             const cartProductQuantity = cartProduct.querySelector('.cart-list__quantity span');
 			cartProductQuantity.innerHTML = --cartProductQuantity.innerHTML;
@@ -409,5 +439,36 @@ window.onload = function () {
             gallery.classList.remove('_init');
         }
     }
+    
+    //================================================================================
+    //Products page load products
 
+    if (window.location.pathname == '/products.html') {
+        loadProducts(products.products);
+    }
+    
+    //================================================================================
+    //Products page filter
+    
+    let productFilter = JSON.parse(localStorage.getItem('productFilter'));
+    let productToShow, roomToShow;
+    if (productFilter) {
+        productToShow = productFilter.product;
+        roomToShow = productFilter.room;
+    } else {
+        productToShow = 'all';
+        roomToShow = 'all';
+    }
+    let productOutput = document.querySelector('.product_output');
+    let roomOutput = document.querySelector('.room_output');
+    if(productOutput && roomOutput) {
+        productOutput.textContent = productToShow;
+        roomOutput.textContent = roomToShow;
+    }
+    
+    // let res = products.products.filter(el=>{return el.room.includes('bedroom')});
+    // // res = products.products.map(el=>{return el.room.includes('bedroom')})
+    // console.log(res);
+    
+    
 }

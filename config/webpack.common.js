@@ -8,7 +8,7 @@ module.exports = {
   // Where webpack looks to start building the bundle
   entry: {
     index: paths.src + '/index.js',
-    about: paths.src + '/pages/about.js'
+    products: paths.src + '/pages/products.js'
   },
 
   // Where webpack outputs the assets and bundles
@@ -47,10 +47,10 @@ module.exports = {
       chunks: ['index'],
     }),
     new HtmlWebpackPlugin({
-      template: paths.src + '/pages/about.html',
+      template: paths.src + '/pages/products.html',
       inject: true,
-      chunks: ['about'],
-      filename: 'about.html'
+      chunks: ['products'],
+      filename: 'products.html'
     }),
   ],
 
