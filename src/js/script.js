@@ -36,7 +36,9 @@ ibg();
 //==========================================================================
 
 let isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
+let isTouch = false;
 
+window.ontouchstart = function() {isTouch = true}
 window.onload = function () {
     document.body.style.display = 'block';
     document.addEventListener('click', documentActions);
@@ -47,7 +49,7 @@ window.onload = function () {
         // console.log(targetElement);
         // console.log(e);
 
-        if (isMobile.any()) {
+        if (isMobile.any() || isTouch) {
             alert('here!!!')
             if (targetElement.classList.contains('menu__arrow') || targetElement.classList.contains('menu__link')) {
                 targetElement.closest('.menu__item').classList.toggle('_hover');
