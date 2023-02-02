@@ -126,6 +126,9 @@ window.onload = function () {
                 }
             }
         }
+        if (targetElement.classList.contains('actions-product__link') || targetElement.classList.contains('inspiration__button') || targetElement.classList.contains('slider-inspiration__content') || targetElement.closest('.slider-inspiration__content') || targetElement.classList.contains('slider-tips__image') || targetElement.classList.contains('slider-tips__title') || targetElement.classList.contains('actions-header__item_favorites')) {
+            e.preventDefault();
+        }
     }
 
     document.addEventListener('submit', documentSubmitActions);
