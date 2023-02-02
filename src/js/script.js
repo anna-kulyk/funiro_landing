@@ -494,3 +494,14 @@ window.onload = function () {
         return filteredProducts;
     }
 }
+
+window.ontouchstart = function (e) {
+    const targetElement = e.target;
+
+    if (targetElement.classList.contains('menu__arrow') || targetElement.classList.contains('menu__link')) {
+        targetElement.closest('.menu__item').classList.toggle('_hover');
+    }
+    if (!targetElement.closest('.menu__item') && document.querySelectorAll('.menu__item._hover').length > 0) {
+        document.querySelectorAll('.menu__item._hover').forEach(el => el.classList.remove('_hover'));
+    }
+}
