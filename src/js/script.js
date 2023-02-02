@@ -48,6 +48,7 @@ window.onload = function () {
         // console.log(e);
 
         if (isMobile.any()) {
+            alert('here!!!')
             if (targetElement.classList.contains('menu__arrow') || targetElement.classList.contains('menu__link')) {
                 targetElement.closest('.menu__item').classList.toggle('_hover');
             }
