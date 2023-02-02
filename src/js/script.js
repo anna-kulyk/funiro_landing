@@ -240,24 +240,6 @@ window.onload = function () {
         })
     }
 
-	// async function getProducts(button) {
-	// 	if (!button.classList.contains('_hold')) {
-	// 		button.classList.add('_hold');
-	// 		const file = "json/products.json";
-	// 		let response = await fetch(file, {
-	// 			method: "GET"
-	// 		});
-	// 		if (response.ok) {
-	// 			let result = await response.json();
-	// 			loadProducts(result);
-	// 			button.classList.remove('_hold');
-	// 			button.remove();
-	// 		} else {
-	// 			alert("Error");
-	// 		}
-	// 	}
-	// }
-
     //==========================================================================
     //Add to cart
     let itemsInCart = JSON.parse(localStorage.getItem('cartFuniro'));
@@ -495,9 +477,13 @@ window.onload = function () {
     }
 }
 
-window.ontouchstart = function (e) {
-    const targetElement = e.target;
-    if (!isMobile.any()) {
+//================================================================================
+//For Safari
+
+if (!isMobile.any()) {
+    window.ontouchstart = function (e) {
+        const targetElement = e.target;
+
         if (targetElement.classList.contains('menu__arrow') || targetElement.classList.contains('menu__link')) {
             targetElement.closest('.menu__item').classList.toggle('_hover');
         }
