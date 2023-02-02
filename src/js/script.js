@@ -49,6 +49,12 @@ window.onload = function () {
 
         if (isMobile.any() || e.pointerType == 'touch') {
             if (targetElement.classList.contains('menu__arrow') || targetElement.classList.contains('menu__link')) {
+                let menuItems = document.querySelectorAll('.menu__item');
+                menuItems.forEach(element => {
+                    if (element != targetElement.closest('.menu__item') && element.classList.contains('_hover') && !menu.classList.contains('active')) {
+                        element.classList.remove('_hover');
+                    }
+                });
                 targetElement.closest('.menu__item').classList.toggle('_hover');
             }
             if (!targetElement.closest('.menu__item') && document.querySelectorAll('.menu__item._hover').length > 0) {
@@ -485,6 +491,12 @@ if (!isMobile.any()) {
         const targetElement = e.target;
 
         if (targetElement.classList.contains('menu__arrow') || targetElement.classList.contains('menu__link')) {
+            let menuItems = document.querySelectorAll('.menu__item');
+            menuItems.forEach(element => {
+                if (element != targetElement.closest('.menu__item') && element.classList.contains('_hover') && !menu.classList.contains('active')) {
+                    element.classList.remove('_hover');
+                }
+            });
             targetElement.closest('.menu__item').classList.toggle('_hover');
         }
         if (!targetElement.closest('.menu__item') && document.querySelectorAll('.menu__item._hover').length > 0) {
