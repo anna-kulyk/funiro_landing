@@ -135,7 +135,12 @@ window.onload = function () {
 
     function documentSubmitActions(e) {
         const targetElement = e.target;
-        if (targetElement.classList.contains('search-form__item') || targetElement.classList.contains('subscribe__form')) {
+        if (targetElement.classList.contains('search-form__item')) {
+            e.preventDefault();
+            searchFormHandler(e.target[1].value);
+            // targetElement.reset();
+        }
+        if (targetElement.classList.contains('subscribe__form')) {
             e.preventDefault();
             targetElement.reset();
         }
@@ -441,6 +446,7 @@ window.onload = function () {
 
     if (window.location.pathname == '/products.html') {
         let productFilter = JSON.parse(localStorage.getItem('productFilter'));
+        let searchFilter = JSON.parse(localStorage.getItem('searchFilter'));
         let productToShow, roomToShow;
         let productData;
         if (productFilter) {
@@ -459,8 +465,16 @@ window.onload = function () {
                 filterSubtitleOutput.textContent = productFilters[roomToShow];
                 productData = products.products.filter(el => el.room.includes(roomToShow))
             } else {
-                filetArrow.style.display = 'none';
-                productData = products.products;
+                if (!searchFilter || searchFilter.search == 'false') {
+                    filetArrow.style.display = 'none';
+                    productData = products.products;
+                }
+                else {
+                    filetArrow.style.display = 'none';
+                    filterTitleOutput.textContent = `Showing results for "${searchFilter.input}"`;
+                    productData = searchFilterHandler(searchFilter.input);
+                    localStorage.setItem('searchFilter', JSON.stringify({search:'false', input:''}));
+                }
             }
         }
 
@@ -484,6 +498,48 @@ window.onload = function () {
         }
         return filteredProducts;
     }
+}
+
+//================================================================================
+//Search Form
+
+function searchFormHandler(input) {
+    localStorage.setItem('productFilter', JSON.stringify({product:'all', room:'all'}));
+    localStorage.setItem('searchFilter', JSON.stringify({search:'true', input:input}));
+    window.location.pathname = '/products.html';
+}
+
+function searchFilterHandler(input) {
+    const searchInput = input.toLowerCase();
+    let filteredProducts = [];
+    products.products.forEach(product => {
+        let addProduct = false;
+        if (product.title.toLowerCase().includes(searchInput) || product.text.toLowerCase().includes(searchInput)) {
+            filteredProducts.push(product);
+            addProduct = true;
+        }
+
+        if (!addProduct) {
+            for (const room of product.room) {
+                if (room.toLowerCase().includes(searchInput)) {
+                    filteredProducts.push(product);
+                    addProduct = true;
+                    break;
+                }
+            }
+        }
+
+        if (!addProduct) {
+            for (const label of product.labels) {
+                if (label.type.toLowerCase().includes(searchInput)) {
+                    filteredProducts.push(product);
+                    addProduct = true;
+                    break;
+                }
+            }
+        }
+    })
+    return filteredProducts;
 }
 
 //================================================================================
