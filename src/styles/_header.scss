@@ -48,7 +48,7 @@
     &__main {
         display: flex;
         align-items: center;
-        flex: 0 0 494/1240*100%;
+        flex: 0 0 calc(494/1240*100%);
 
         @media (max-width: #{$md2 + px}) {
             flex: 1 1 auto;
@@ -58,7 +58,7 @@
     &__logo {
         font-weight: 700;
         font-size: 24px;
-        line-height: 29/24*100%;
+        line-height: calc(29/24*100%);
         color: #000000;
         position: relative;
         z-index: 5;
@@ -454,7 +454,7 @@
         color: inherit;
         font-weight: 600;
         transition: color 0.3s ease 0s;
-        margin: 0px 0px 5px/16px * 1em 0px;
+        margin: 0px 0px calc(5px/16px * 1em) 0px;
         @media (any-hover: hover) {
             &:hover {
                 color: $orangeColor;
@@ -464,7 +464,7 @@
     //.cart-list__quantity
     &__quantity {
         font-size: 14px;
-        margin: 0px 0px 5px/14px * 1em 0px;
+        margin: 0px 0px calc(5px/14px * 1em) 0px;
     }
     //.cart-list__delete
     &__delete {
