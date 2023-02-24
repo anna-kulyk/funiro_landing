@@ -49,6 +49,6 @@
     "url": "git@github.com:anna-kulyk/funiro_landing"
   },
   "dependencies": {
-    "swiper": "^9.0.5"
+    "swiper": "^8.4.6"
   }
 }
