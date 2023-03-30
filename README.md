@@ -1,6 +1,6 @@
 # Funiro Landing Page
 
-A landing page for the furniture shop Funiro. This website consists of two pages: home page and products page.
+An eCommerce website for the furniture shop Funiro. This website consists of two pages: home page and products page.
 
 ## [Check the live demo](https://funiro-landing-page.netlify.app/)
 
