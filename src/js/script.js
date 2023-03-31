@@ -43,9 +43,6 @@ window.onload = function () {
 
     function documentActions(e) {
         const targetElement = e.target;
-        // e.preventDefault();
-        // console.log(targetElement);
-        // console.log(e);
 
         if (isMobile.any() || e.pointerType == 'touch') {
             if (targetElement.classList.contains('menu__arrow') || targetElement.classList.contains('menu__link')) {
